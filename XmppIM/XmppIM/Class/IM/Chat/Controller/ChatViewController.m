@@ -114,8 +114,17 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         if (fetchedObjects != nil) {
             for(XMPPMessageArchiving_Message_CoreDataObject *messageObject in fetchedObjects){
+                
                 PJMessage *message = nil;
+                //消息发送方是谁(即消息显示在左边还是右边)
+
                 message = [PJMessageTool dealWithMessage:messageObject.message];
+//                NSString *newMessage =  messageObject.message.toStr;
+//                if([[XMPPManager shareInstanceManager].currentUser.jid.full containsString:newMessage]){
+//                    message.showMessageIn = ShowMessageInLeft;
+//                }else{
+//                    message.showMessageIn = ShowMessageInRight;
+//                }
                 [weakSelf.chatArray addObject:message];
             }
         }
@@ -267,7 +276,7 @@
     NSNumber *duration = [info objectForKey:UIKeyboardAnimationDurationUserInfoKey];
     WeakSelf
     [UIView animateWithDuration:duration.doubleValue animations:^{
-//        weakSelf.inputBar.frame = CGRectMake(0, 74, weakSelf.inputBar.frame.size.width, weakSelf.inputBar.frame.size.height);
+        //        weakSelf.inputBar.frame = CGRectMake(0, 74, weakSelf.inputBar.frame.size.width, weakSelf.inputBar.frame.size.height);
         weakSelf.inputBar.transform = CGAffineTransformMakeTranslation(0, -keyboardSize.height);
     }];
 }
@@ -277,7 +286,7 @@
     NSNumber *duration = [info objectForKey:UIKeyboardAnimationDurationUserInfoKey];
     WeakSelf
     [UIView animateWithDuration:duration.doubleValue animations:^{
-//        weakSelf.inputBar.frame = CGRectMake(0, weakSelf.view.frame.size.height - weakSelf.inputBar.frame.size.height, weakSelf.inputBar.frame.size.width, weakSelf.inputBar.frame.size.height);
+        //        weakSelf.inputBar.frame = CGRectMake(0, weakSelf.view.frame.size.height - weakSelf.inputBar.frame.size.height, weakSelf.inputBar.frame.size.width, weakSelf.inputBar.frame.size.height);
         weakSelf.inputBar.transform = CGAffineTransformIdentity;
     }];
 }
@@ -294,6 +303,7 @@
     //XEP--0136 已经用coreData实现了数据的接收和保存
     if(message.isChatMessageWithBody){
         PJMessage *receiveMessage = [PJMessageTool dealWithMessage:message];
+        receiveMessage.showMessageIn = ShowMessageInLeft;
         switch (receiveMessage.messageType) {
                 //如果是图片消息需要对图片先进行缓存在通知用户新消息到来
             case PJMessageImageType:{
@@ -342,3 +352,4 @@
 }
 
 @end
+

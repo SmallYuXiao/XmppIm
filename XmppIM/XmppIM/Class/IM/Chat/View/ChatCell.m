@@ -67,11 +67,12 @@
         messageContentViewRect = CGRectMake(CGRectGetMaxX(_avatarLeft.frame) + M, _avatarLeft.frame.origin.y, self.message.messageContentSize.width + 2 * M, self.message.messageContentSize.height + 2 * M);
         _messageContentView.backgroundColor = [UIColor whiteColor];
     }else{
+        
         _avatarLeft.hidden = YES;
         _avatarRight.hidden = NO;
         
         messageContentViewRect = CGRectMake(_avatarRight.frame.origin.x - 3 * M - self.message.messageContentSize.width, _avatarRight.frame.origin.y, self.message.messageContentSize.width + 2 * M, self.message.messageContentSize.height + 2 * M);
-        _messageContentView.backgroundColor = [UIColor greenColor];
+        _messageContentView.backgroundColor = [UIColor colorWithRed:95/255.0 green:148/255.0 blue:241/255.0 alpha:1];
     }
     _messageContentView.frame = messageContentViewRect;
 }

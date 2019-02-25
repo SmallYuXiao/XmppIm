@@ -32,6 +32,12 @@
         message = [PJContentMessage dealWithMessage:xmppMessage];
     }
     
+    //这里还是有问题
+    if (arc4random()%2 == 0){
+        message.showMessageIn = ShowMessageInLeft;
+    }else{
+        message.showMessageIn = ShowMessageInRight;
+    }
     //消息发送方是谁(即消息显示在左边还是右边)
     if([[XMPPManager shareInstanceManager].currentUser.jid.full containsString:xmppMessage.toStr]){
         message.showMessageIn = ShowMessageInLeft;

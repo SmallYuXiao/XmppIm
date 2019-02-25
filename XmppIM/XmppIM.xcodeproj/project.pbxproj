@@ -633,7 +633,7 @@
 				TargetAttributes = {
 					CAADE9DA1F0DE18800BA2B3A = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = KQ97X6WRL9;
+						DevelopmentTeam = 34CSG56C4R;
 						ProvisioningStyle = Automatic;
 					};
 					CAADE9F31F0DE18800BA2B3A = {
@@ -937,7 +937,7 @@
 			baseConfigurationReference = FE16AE13F43A88AF926CE13B /* Pods-XmppIM.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = KQ97X6WRL9;
+				DEVELOPMENT_TEAM = 34CSG56C4R;
 				GCC_PREFIX_HEADER = XmppIM/PrefixHeader.pch;
 				INFOPLIST_FILE = XmppIM/Other/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -952,7 +952,7 @@
 			baseConfigurationReference = B902F4BDEAD1D74298E45C75 /* Pods-XmppIM.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = KQ97X6WRL9;
+				DEVELOPMENT_TEAM = 34CSG56C4R;
 				GCC_PREFIX_HEADER = XmppIM/PrefixHeader.pch;
 				INFOPLIST_FILE = XmppIM/Other/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

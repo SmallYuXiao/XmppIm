@@ -17,8 +17,8 @@ typedef NS_ENUM(NSInteger,XMPPConnectType){
 };
 
 //服务器名称
-#define DoMain @"piaojindemacbook-pro.local"
-#define Resource @"im.piaojin"
+#define DoMain @"192.168.1.250"
+#define Resource @"hycopenfire"
 
 @interface XMPPManager : NSObject<XMPPStreamDelegate,XMPPRosterDelegate>
 
