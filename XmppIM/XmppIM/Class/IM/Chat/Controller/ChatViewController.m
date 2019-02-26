@@ -119,12 +119,6 @@
                 //消息发送方是谁(即消息显示在左边还是右边)
 
                 message = [PJMessageTool dealWithMessage:messageObject.message];
-//                NSString *newMessage =  messageObject.message.toStr;
-//                if([[XMPPManager shareInstanceManager].currentUser.jid.full containsString:newMessage]){
-//                    message.showMessageIn = ShowMessageInLeft;
-//                }else{
-//                    message.showMessageIn = ShowMessageInRight;
-//                }
                 [weakSelf.chatArray addObject:message];
             }
         }
