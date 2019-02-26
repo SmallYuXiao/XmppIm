@@ -32,9 +32,13 @@
     _avatarLeft = [[UIButton alloc] init];
     //头像图片是盗用别人的
     [_avatarLeft setBackgroundImage:[UIImage imageNamed:@"lufei"] forState:(UIControlStateNormal)];
+    _avatarLeft.layer.masksToBounds = YES;
+    _avatarLeft.layer.cornerRadius = 14;
     [self.contentView addSubview:_avatarLeft];
     
     _avatarRight = [[UIButton alloc] init];
+    _avatarRight.layer.masksToBounds = YES;
+    _avatarRight.layer.cornerRadius = 14;
     //头像图片是盗用别人的
     [_avatarRight setBackgroundImage:[UIImage imageNamed:@"aisi"] forState:(UIControlStateNormal)];
     [self.contentView addSubview:_avatarRight];
@@ -56,6 +60,7 @@
     if(_avatarLeft.frame.size.width <= 0){
         //头像的frame只需要设置一次即可
         _avatarLeft.frame = CGRectMake(M, M, W, H);
+        
         _avatarRight.frame = CGRectMake(ScreenWidth - M - W, M, W, H);
     }
     
@@ -66,13 +71,14 @@
         _avatarLeft.hidden = NO;
         messageContentViewRect = CGRectMake(CGRectGetMaxX(_avatarLeft.frame) + M, _avatarLeft.frame.origin.y, self.message.messageContentSize.width + 2 * M, self.message.messageContentSize.height + 2 * M);
         _messageContentView.backgroundColor = [UIColor whiteColor];
+        
     }else{
         
         _avatarLeft.hidden = YES;
         _avatarRight.hidden = NO;
         
         messageContentViewRect = CGRectMake(_avatarRight.frame.origin.x - 3 * M - self.message.messageContentSize.width, _avatarRight.frame.origin.y, self.message.messageContentSize.width + 2 * M, self.message.messageContentSize.height + 2 * M);
-        _messageContentView.backgroundColor = [UIColor colorWithRed:95/255.0 green:148/255.0 blue:241/255.0 alpha:1];
+        _messageContentView.backgroundColor = [UIColor colorWithRed:95.0/255.0 green:148.0/255.0 blue:241.0/255.0 alpha:1];
     }
     _messageContentView.frame = messageContentViewRect;
 }

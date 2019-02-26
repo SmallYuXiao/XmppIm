@@ -11,7 +11,7 @@
 
 @interface ContentChatCell ()
 
-@property (nonatomic, strong)UILabel *contentLabel;
+
 
 @end
 
@@ -28,6 +28,7 @@
     _contentLabel = [[UILabel alloc] init];
     _contentLabel.numberOfLines = 0;
     _contentLabel.font = [UIFont systemFontOfSize:16.0];
+//    _contentLabel.textColor = UIColor.redColor;
     [self.messageContentView addSubview:_contentLabel];
 }
 

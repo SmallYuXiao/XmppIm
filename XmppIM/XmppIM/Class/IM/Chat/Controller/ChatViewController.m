@@ -48,7 +48,8 @@
 - (void)initView{
     //标志用户是否在线
     //0:在线 1:离开 2:离线
-    self.title = [NSString stringWithFormat:@"%@-%@",self.chatUserModel.userName,self.chatUserModel.xmppUserCoreDataStorageObject.sectionNum ? @"离线" : @"在线"];
+//    self.title = [NSString stringWithFormat:@"%@-%@",self.chatUserModel.userName,self.chatUserModel.xmppUserCoreDataStorageObject.sectionNum ? @"离线" : @"在线"];
+    self.title = @"图文咨询";
     
     CGFloat inputBarH = 50;
     _inputBar = [[PJInputBar alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height - inputBarH, self.view.bounds.size.width, inputBarH)];
@@ -152,9 +153,11 @@
     PJMessage *message = self.chatArray[indexPath.row];
     ChatCell *cell = nil;
     switch (message.messageType) {
+            //文字信息
         case PJMessageContentType:
             cell = [ContentChatCell cellWithTable:tableView];
             break;
+            //图片信息
         case PJMessageImageType:
             cell = [ImageChatCell cellWithTable:tableView];
             //点击浏览图片,这边只是最简单的显示图片而已,并无做任何其他处理
@@ -162,6 +165,7 @@
                 [PreviewImageManager showImage:pjimageView.image];
             };
             break;
+            //语音信息
         case PJMessageVoiceType:
             cell = [VoiceChatCell cellWithTable:tableView];
             break;
@@ -271,7 +275,7 @@
     WeakSelf
     [UIView animateWithDuration:duration.doubleValue animations:^{
         //        weakSelf.inputBar.frame = CGRectMake(0, 74, weakSelf.inputBar.frame.size.width, weakSelf.inputBar.frame.size.height);
-        weakSelf.inputBar.transform = CGAffineTransformMakeTranslation(0, -keyboardSize.height);
+        weakSelf.inputBar.transform = CGAffineTransformMakeTranslation(0, -keyboardSize.height+30);
     }];
 }
 

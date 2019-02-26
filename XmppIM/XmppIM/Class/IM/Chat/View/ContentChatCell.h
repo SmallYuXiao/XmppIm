@@ -12,4 +12,6 @@
 
 @property (nonatomic, strong)PJContentMessage *contentMessage;
 
+@property (nonatomic, strong)UILabel *contentLabel;
+
 @end
