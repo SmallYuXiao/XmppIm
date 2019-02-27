@@ -40,6 +40,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    [self  tableViewScrollToBottom];
     [self initView];
     [self initData];
     [self initNotifi];

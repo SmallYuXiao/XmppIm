@@ -135,7 +135,7 @@
 //收到好友列表IQ会进入的方法，并且已经存入我的存储器
 -(void)xmppRosterDidEndPopulating:(XMPPRoster *)sender{
     NSLog(@"获取好友列表结束,此处向外部传值");
-    [self loadFreinds];
+//    [self loadFreinds];
     [self.tableView reloadData];
     [self.tableView.mj_header endRefreshing];
 }

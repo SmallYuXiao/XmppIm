@@ -101,7 +101,7 @@
     //标记连接服务器的目的
     self.connectType = XMPPRegister;
     //1. 创建一个jid
-    XMPPJID *jid = [XMPPJID jidWithUser:userName domain:DoMain resource:@"piaojin-iphone"];
+    XMPPJID *jid = [XMPPJID jidWithUser:userName domain:DoMain resource:@"hycopenfire"];
     //2.将jid绑定到xmppStream
     self.xmppStream.myJID = jid;
     //3.连接到服务器
@@ -183,7 +183,8 @@
         [sender authenticateWithPassword:self.currentUser.password error:&error];
         if(!error){
             self.currentUser.jid = sender.myJID;
-            NSLog(@"登录成功");
+//            NSLog(@"登录成功");
+            [SVProgressHUD showWithStatus:@"登录成功"];
         }else{
             NSLog(@"登录失败");
         }
