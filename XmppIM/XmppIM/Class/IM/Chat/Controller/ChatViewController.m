@@ -189,13 +189,39 @@
 //发送文本消息
 - (void)sendTextMessage{
     XMPPMessage *message = [XMPPMessage messageWithType:@"chat" to:_chatUserModel.jid];
-    [message addBody:_inputBar.messageContent];
+    
+    NSMutableDictionary *dic1 = [[NSMutableDictionary alloc]init];
+    [dic1 setValue:@"1" forKey:@"sendUserId"];
+    [dic1 setValue:@"房间号" forKey:@"acceptUserId"];
+    [dic1 setValue:@"1" forKey:@"messageId"];
+    [dic1 setValue:@"1" forKey:@"sendUserImgae"];
+    [dic1 setValue:@"10" forKey:@"acceptUserImage"];
+    [dic1 setValue:@"00" forKey:@"concDoctorId"];
+    [dic1 setValue:@"房间号" forKey:@"concUserId"];
+    [dic1 setValue:_inputBar.messageContent forKey:@"content"];
+    [dic1 setValue:@"1" forKey:@"contentTag"];
+    [dic1 setValue:@"10" forKey:@"messageTag"];
+    [dic1 setValue:@"00" forKey:@"sendTime"];
+    
+    
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
+    [dic setValue:@"1" forKey:@"msgSystem"];
+    [dic setValue:@"房间号" forKey:@"roomNumber"];
+    [dic setValue:@"1" forKey:@"msgType"];
+    [dic setValue:@"1" forKey:@"userType"];
+    [dic setValue:@"10" forKey:@"chitchatCount"];
+    [dic setValue:dic1 forKey:@"msgBody"];
+    
+    NSData *data=[NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:nil];
+    NSString *jsonStr=[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+    [message addBody:jsonStr];
     [message addSubject:TextMessage];
     PJContentMessage *contentMessage = [[PJContentMessage alloc] initWithXMPPMessage:message];
     contentMessage.showMessageIn = ShowMessageInRight;
     [self.chatArray addObject:contentMessage];
     [self.tableView reloadData];
     [self tableViewScrollToBottom];
+    NSLog(@"%@",message);
     [[XMPPManager shareInstanceManager].xmppStream sendElement:message];
 }
 
@@ -203,6 +229,7 @@
 - (void)sendImageMessage:(UIImage *)image{
     XMPPMessage *message = [XMPPMessage messageWithType:@"chat" to:_chatUserModel.jid];
     [message addBody:ImageMessage];
+  
     [message addSubject:ImageMessage];
     PJImageMessage *imageMessage = [[PJImageMessage alloc] initWithXMPPMessage:message];
     imageMessage.showMessageIn = ShowMessageInRight;

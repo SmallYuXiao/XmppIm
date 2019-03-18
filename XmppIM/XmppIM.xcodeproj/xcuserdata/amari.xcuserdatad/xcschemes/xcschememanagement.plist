@@ -7,7 +7,25 @@
 		<key>XmppIM.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>CAADE9DA1F0DE18800BA2B3A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CAADE9F31F0DE18800BA2B3A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CAADE9FE1F0DE18800BA2B3A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
