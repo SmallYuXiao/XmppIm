@@ -26,6 +26,8 @@
 
 @property (nonatomic, strong)UITableView *tableView;
 @property (nonatomic, strong)PJInputBar *inputBar;
+/* 群聊房间 */
+@property (nonatomic,strong)XMPPRoom *xmppRoom;
 //聊天信息列表
 @property (nonatomic, strong)NSMutableArray<PJMessage *> *chatArray;
 
@@ -47,6 +49,15 @@
 }
 
 - (void)initView{
+    self.xmppRoom = [[XMPPRoom alloc]initWithRoomStorage:[XMPPRoomCoreDataStorage sharedInstance] jid:_chatUserModel.jid];
+     [self.xmppRoom addDelegate:self delegateQueue:dispatch_get_main_queue()];
+    /* 激活 */
+    [self.xmppRoom activate:[XMPPManager shareInstanceManager].xmppStream];
+    /**
+     * @参数1:nickname
+     * @参数2:历史记录,填写 nil, 表示不获取历史记录
+     */
+    [self.xmppRoom joinRoomUsingNickname:@"2e0fa006fa814db4954680e42926d631@conference.kkmcqsc3mrkd8s9" history:nil];
     //标志用户是否在线
     //0:在线 1:离开 2:离线
 //    self.title = [NSString stringWithFormat:@"%@-%@",self.chatUserModel.userName,self.chatUserModel.xmppUserCoreDataStorageObject.sectionNum ? @"离线" : @"在线"];
@@ -61,7 +72,6 @@
         NSLog(@"%@",messageContent);
         [weakSelf sendTextMessage];
     };
-    
     //点击更多(暂时未选择图片)
     _inputBar.moreClick = ^{
         [weakSelf selectPicture];
@@ -191,22 +201,22 @@
     XMPPMessage *message = [XMPPMessage messageWithType:@"chat" to:_chatUserModel.jid];
     
     NSMutableDictionary *dic1 = [[NSMutableDictionary alloc]init];
-    [dic1 setValue:@"1" forKey:@"sendUserId"];
-    [dic1 setValue:@"房间号" forKey:@"acceptUserId"];
-    [dic1 setValue:@"1" forKey:@"messageId"];
+    [dic1 setValue:@"4028ef81683130b301683155ec6c0041" forKey:@"sendUserId"];
+    [dic1 setValue:@"402881f669937cfa016993a57c4e0017" forKey:@"acceptUserId"];
+    [dic1 setValue:@"2019-03-19 14:50:5" forKey:@"messageId"];
     [dic1 setValue:@"1" forKey:@"sendUserImgae"];
     [dic1 setValue:@"10" forKey:@"acceptUserImage"];
-    [dic1 setValue:@"00" forKey:@"concDoctorId"];
-    [dic1 setValue:@"房间号" forKey:@"concUserId"];
+    [dic1 setValue:@"4028ef81683130b301683155ec6c0041" forKey:@"concDoctorId"];
+    [dic1 setValue:@"402881f669937cfa016993a57c4e0017" forKey:@"concUserId"];
     [dic1 setValue:_inputBar.messageContent forKey:@"content"];
-    [dic1 setValue:@"1" forKey:@"contentTag"];
+    [dic1 setValue:@"2" forKey:@"contentTag"];
     [dic1 setValue:@"10" forKey:@"messageTag"];
     [dic1 setValue:@"00" forKey:@"sendTime"];
     
     
     NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
     [dic setValue:@"1" forKey:@"msgSystem"];
-    [dic setValue:@"房间号" forKey:@"roomNumber"];
+    [dic setValue:@"2e0fa006fa814db4954680e42926d631@conference.kkmcqsc3mrkd8s9" forKey:@"roomNumber"];
     [dic setValue:@"1" forKey:@"msgType"];
     [dic setValue:@"1" forKey:@"userType"];
     [dic setValue:@"10" forKey:@"chitchatCount"];

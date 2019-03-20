@@ -79,7 +79,7 @@
     
     //转换成XMPPJID类型
     XMPPJID *userJID = [XMPPJID jidWithString:jid];
-    NSLog(@"%@",[userJID user]);
+
     UserModel *friend = [[UserModel alloc] initWithJid:userJID];
     [self.contacts addObject:friend];
 }

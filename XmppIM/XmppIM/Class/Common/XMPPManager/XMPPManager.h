@@ -18,7 +18,7 @@ typedef NS_ENUM(NSInteger,XMPPConnectType){
 
 //服务器名称
 #define DoMain @"192.168.1.130"
-#define Resource @"hycopenfire"
+#define Resource @"kkmcqsc3mrkd8s9"
 
 @interface XMPPManager : NSObject<XMPPStreamDelegate,XMPPRosterDelegate>
 

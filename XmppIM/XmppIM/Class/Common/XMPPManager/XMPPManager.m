@@ -233,6 +233,7 @@
     if(user){
         //这里的nickname是我对它的备注，并非他的个人资料中得nickname
         [[XMPPManager shareInstanceManager].xmppRoster addUser:user.jid withNickname:user.userName];
+        
     }
 }
 
@@ -276,7 +277,7 @@
         //1.初始化xmppStream，登录和注册的时候都会用到它
         _xmppStream = [[XMPPStream alloc] init];
         //设置服务器地址,这里用的是本地地址（可换成公司具体地址）
-        [_xmppStream setHostName:@"192.168.1.250"];
+        [_xmppStream setHostName:@"192.168.1.130"];
         //设置端口号
         [_xmppStream setHostPort:5222];
     }
